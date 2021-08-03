@@ -93,8 +93,9 @@ $(document).ready(function () {
 
 
 //    let socket = new WebSocket(`ws://127.0.0.1:8000/?session_key=${sessionKey}`);
+    var ws_scheme = window.location.protocol == "https:" ? "wss:" : "ws:";
     var socket = new WebSocket(
-        'ws://' + window.location.host +
+        ws_scheme + window.location.host +
         '/ws?session_key=${sessionKey}')
 
     chatInput.keypress(function (e) {
