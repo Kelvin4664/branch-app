@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 from urllib.parse import urlparse
 import os
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,12 +134,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 DRF_API_LOGGER_DATABASE = True
-REDIS_HOST = urlparse(os.environ.get("REDIS_URL"))
+REDIS_HOST = "ec2-52-54-10-192.compute-1.amazonaws.com"
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(REDIS_HOST, 30829)],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://redis:6379')],
         },
     },
 }
@@ -149,4 +149,4 @@ LOGIN_URL = "/login/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
