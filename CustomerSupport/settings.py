@@ -144,3 +144,4 @@ CHANNEL_LAYERS = {
 
 LOGIN_REDIRECT_URL = LOGOUT_REDIRECT_URL = "/tickets/"
 LOGIN_URL = "/login/"
+STATIC_ROOT = "static"
