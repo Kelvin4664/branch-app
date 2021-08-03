@@ -133,12 +133,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 DRF_API_LOGGER_DATABASE = True
-
+REDIS_HOST = os.environ.get("REDIS_URL")
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [('localhost', 6379)],
+            "hosts": [(REDIS_HOST, 30829)],
         },
     },
 }
